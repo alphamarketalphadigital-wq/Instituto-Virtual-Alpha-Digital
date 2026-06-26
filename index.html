@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Alpha Digital Institute | Marketing, IA, Automatización y Ciberseguridad</title>
+<style>
+:root{
+  --bg:#050816;
+  --bg2:#0b1020;
+  --card:#0f172a;
+  --line:#1f2a44;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+  --gold:#d4af37;
+  --cyan:#38bdf8;
+  --green:#22c55e;
+  --shadow:0 20px 60px rgba(0,0,0,.35);
+  --radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(56,189,248,.12), transparent 28%),
+    radial-gradient(circle at right, rgba(212,175,55,.10), transparent 22%),
+    linear-gradient(180deg, var(--bg), var(--bg2));
+  color:var(--text);
+}
+a{color:inherit}
+.container{width:min(1140px, calc(100% - 32px)); margin:0 auto}
+.section{padding:78px 0; border-top:1px solid rgba(148,163,184,.14)}
+.kicker{
+  display:inline-flex; gap:10px; align-items:center;
+  padding:8px 14px; border:1px solid rgba(212,175,55,.3);
+  background:rgba(212,175,55,.08); border-radius:999px;
+  color:#f5e7b2; font-size:13px; letter-spacing:.04em; text-transform:uppercase
+}
+h1,h2,h3,p{margin:0}
+h1{
+  font-size:clamp(2.4rem, 5vw, 4.8rem);
+  line-height:1.02; letter-spacing:-.03em;
+  margin-top:18px;
+}
+h2{
+  font-size:clamp(1.6rem, 3vw, 2.5rem);
+  line-height:1.12; letter-spacing:-.02em;
+  margin-bottom:14px;
+}
+h3{font-size:1.08rem; margin-bottom:8px}
+p{color:var(--muted); line-height:1.8; font-size:1.02rem}
+.hero{
+  padding:88px 0 56px;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:28px;
+  align-items:center;
+}
+.hero-copy{
+  padding:8px 0;
+}
+.hero-copy .lead{
+  max-width:700px;
+  margin-top:18px;
+  font-size:1.08rem;
+}
+.actions{display:flex; flex-wrap:wrap; gap:14px; margin-top:28px}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:14px 22px; border-radius:14px; text-decoration:none;
+  font-weight:700; border:1px solid transparent;
+  transition:.2s ease; box-shadow:var(--shadow)
+}
+.btn-primary{background:linear-gradient(135deg, var(--gold), #f4d06f); color:#111827}
+.btn-secondary{background:transparent; border-color:rgba(56,189,248,.45); color:#cdefff}
+.btn:hover{transform:translateY(-1px); filter:brightness(1.02)}
+.hero-panel{
+  background:linear-gradient(180deg, rgba(15,23,42,.9), rgba(9,14,28,.98));
+  border:1px solid rgba(148,163,184,.16);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:24px;
+}
+.meta{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  margin-top:18px;
+}
+.meta .box{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(148,163,184,.12);
+  border-radius:16px;
+  padding:16px;
+}
+.meta .box strong{display:block; color:#fff; margin-top:4px}
+.grid{
+  display:grid; gap:18px;
+}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.card{
+  background:rgba(15,23,42,.92);
+  border:1px solid rgba(148,163,184,.14);
+  border-radius:var(--radius);
+  padding:22px;
+  box-shadow:var(--shadow);
+}
+.card p{font-size:.98rem}
+.list{display:grid; gap:12px; margin-top:18px}
+.item{
+  padding:14px 16px;
+  border-radius:14px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(148,163,184,.10);
+}
+.item strong{display:block; color:#fff; margin-bottom:5px}
+.tag-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
+.tag{
+  padding:9px 12px; border-radius:999px;
+  background:rgba(56,189,248,.08);
+  border:1px solid rgba(56,189,248,.16);
+  color:#d7f5ff; font-size:.92rem
+}
+.price-box{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:18px;
+  align-items:center;
+}
+.price{
+  font-size:clamp(2rem, 4vw, 3.2rem);
+  line-height:1;
+  color:#fff;
+}
+.price small{
+  display:block; color:var(--muted); font-size:.95rem; margin-top:10px
+}
+.cta-box{
+  display:flex; flex-direction:column; gap:14px; align-items:flex-start
+}
+.steps{
+  counter-reset:step;
+  display:grid; gap:14px;
+}
+.step{
+  position:relative;
+  padding:18px 18px 18px 64px;
+  border-radius:16px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(148,163,184,.11);
+}
+.step:before{
+  counter-increment:step;
+  content:counter(step);
+  position:absolute; left:18px; top:18px;
+  width:32px; height:32px; border-radius:999px;
+  display:grid; place-items:center;
+  background:rgba(212,175,55,.14);
+  color:#ffe8a3; font-weight:800;
+  border:1px solid rgba(212,175,55,.22);
+}
+.faq{
+  display:grid; gap:12px;
+}
+details{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(148,163,184,.11);
+  border-radius:16px;
+  padding:16px 18px;
+}
+summary{
+  cursor:pointer; list-style:none; color:#fff; font-weight:700;
+}
+summary::-webkit-details-marker{display:none}
+footer{
+  padding:34px 0 48px;
+  color:var(--muted);
+  text-align:center;
+  border-top:1px solid rgba(148,163,184,.14);
+  font-size:.95rem;
+}
+.hr{
+  height:1px; background:linear-gradient(90deg, transparent, rgba(212,175,55,.28), transparent);
+  margin:18px 0 0;
+}
+@media (max-width: 920px){
+  .hero-grid,.grid-2,.grid-4,.price-box{grid-template-columns:1fr}
+}
+@media (max-width: 640px){
+  .section{padding:62px 0}
+  .hero{padding:58px 0 38px}
+  .container{width:min(1140px, calc(100% - 22px))}
+  .meta{grid-template-columns:1fr}
+  .price{font-size:2.1rem}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="kicker">Instituto virtual · 6 meses · Hotmart</span>
+      <h1>Alpha Digital Institute</h1>
+      <p class="lead">
+        Formación estratégica en Marketing + IA, Automatización empresarial, Inteligencia artificial aplicada y Ciberseguridad empresarial, diseñada para ayudarte a crecer con orden, tecnología y protección en la nueva economía.
+      </p>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="TU_ENLACE_HOTMART">Inscribirme ahora</a>
+        <a class="btn btn-secondary" href="#planes">Ver plan mensual</a>
+      </div>
+
+      <div class="tag-row">
+        <span class="tag">Marketing + IA</span>
+        <span class="tag">Automatización empresarial</span>
+        <span class="tag">IA aplicada</span>
+        <span class="tag">Ciberseguridad empresarial</span>
+      </div>
+    </div>
+
+    <aside class="hero-panel">
+      <h3>Resumen del programa</h3>
+      <div class="meta">
+        <div class="box">
+          <span class="muted">Formato</span>
+          <strong>100% virtual</strong>
+        </div>
+        <div class="box">
+          <span class="muted">Duración</span>
+          <strong>6 meses</strong>
+        </div>
+        <div class="box">
+          <span class="muted">Inversión</span>
+          <strong>USD 100/mes</strong>
+        </div>
+        <div class="box">
+          <span class="muted">Acceso</span>
+          <strong>Hotmart</strong>
+        </div>
+      </div>
+      <div class="hr"></div>
+      <p style="margin-top:18px">
+        Una ruta formativa para aprender habilidades digitales reales, aplicarlas en negocios y construir una base más sólida para trabajar, emprender o escalar tu proyecto.
+      </p>
+    </aside>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container grid grid-2">
+    <div class="card">
+      <span class="kicker"></span>
+      <h2>Una institución con propósito claro</h2>
+      <p>
+        Alpha no nace para ofrecer clases sueltas. Nace para formar una generación que sepa usar marketing, automatización, inteligencia artificial y ciberseguridad con criterio, método y visión de negocio.
+      </p>
+      <p style="margin-top:12px">
+        La promesa es simple: que salgas con herramientas útiles, una ruta clara y una comprensión más estratégica de la economía digital.
+      </p>
+    </div>
+
+    <div class="card">
+      <span class="kicker"></span>
+      <h2>Cómo funciona</h2>
+      <div class="steps">
+        <div class="step">
+          <strong>Inscripción mensual</strong>
+          <p>Accedes al instituto por USD 100 al mes durante 6 meses.</p>
+        </div>
+        <div class="step">
+          <strong>Aprendizaje progresivo</strong>
+          <p>Cada mes recibes contenido, guías, recursos y práctica aplicada.</p>
+        </div>
+        <div class="step">
+          <strong>Aplicación real</strong>
+          <p>Lo aprendido está pensado para usarlo en negocios, clientes o proyectos propios.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <span class="kicker"></span>
+    <h2>Qué vas a aprender</h2>
+    <div class="grid grid-4" style="margin-top:24px">
+      <div class="card">
+        <h3>Marketing + IA</h3>
+        <p>Estrategias de captación, contenido y ventas potenciadas con inteligencia artificial.</p>
+      </div>
+      <div class="card">
+        <h3>Automatización empresarial</h3>
+        <p>Flujos y sistemas para ahorrar tiempo, reducir tareas manuales y operar con más orden.</p>
+      </div>
+      <div class="card">
+        <h3>IA aplicada</h3>
+        <p>Uso práctico de IA para productividad, análisis, creación y apoyo a decisiones.</p>
+      </div>
+      <div class="card">
+        <h3>Ciberseguridad empresarial</h3>
+        <p>Protección de cuentas, datos, accesos y activos digitales en contextos profesionales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid grid-2">
+    <div class="card">
+      <span class="kicker">Tiferet · corazón</span>
+      <h2>Por qué Alpha es distinto</h2>
+      <p>
+        Porque une crecimiento y protección. No solo enseña a vender o automatizar; también enseña a construir una base más segura, más clara y más profesional para sostener resultados.
+      </p>
+      <p style="margin-top:12px">
+        La experiencia está pensada para quienes quieren aprender con seriedad y llevar el conocimiento a la vida real.
+      </p>
+    </div>
+
+    <div class="card">
+      <span class="kicker"></span>
+      <h2>Para quién es</h2>
+      <div class="list">
+        <div class="item">
+          <strong>Emprendedores</strong>
+          Personas que quieren crecer con estrategia digital.
+        </div>
+        <div class="item">
+          <strong>Profesionales</strong>
+          Quienes desean actualizarse y sumar habilidades de alto valor.
+        </div>
+        <div class="item">
+          <strong>Dueños de negocio</strong>
+          Quienes buscan vender mejor, automatizar y proteger su operación.
+        </div>
+        <div class="item">
+          <strong>Freelancers</strong>
+          Quienes quieren ofrecer servicios modernos y más rentables.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <span class="kicker"></span>
+    <h2>Beneficios de la formación</h2>
+    <div class="grid grid-2" style="margin-top:24px">
+      <div class="card">
+        <h3>Creces con dirección</h3>
+        <p>Aprendes una ruta clara y sostenida durante 6 meses, no clases aisladas sin continuidad.</p>
+      </div>
+      <div class="card">
+        <h3>Ahorras tiempo</h3>
+        <p>La automatización te ayuda a reducir tareas manuales y a operar con más eficiencia.</p>
+      </div>
+      <div class="card">
+        <h3>Mejoras tu valor profesional</h3>
+        <p>Sumas habilidades que hoy tienen demanda real en marketing, IA y seguridad digital.</p>
+      </div>
+      <div class="card">
+        <h3>Proteges lo que construyes</h3>
+        <p>Cuidas cuentas, datos y activos digitales con criterios básicos de ciberseguridad empresarial.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="planes">
+  <div class="container card">
+    <span class="kicker"></span>
+    <div class="price-box" style="margin-top:18px">
+      <div>
+        <h2>Plan mensual Alpha</h2>
+        <div class="price">USD 100<span style="font-size:1rem; color:var(--muted); font-weight:500"> por mes durante 6 meses</span></div>
+        <p style="margin-top:14px; max-width:720px">
+          No estás comprando un video suelto: estás entrando a una formación continua con estructura, contenidos progresivos y aplicación real durante todo el proceso.
+        </p>
+      </div>
+      <div class="cta-box">
+        <a class="btn btn-primary" href="TU_ENLACE_HOTMART">Inscribirme en Hotmart</a>
+        <a class="btn btn-secondary" href="#faq">Resolver mis dudas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid grid-2">
+    <div class="card">
+      <span class="kicker"></span>
+      <h2>Lo que recibes</h2>
+      <div class="list">
+        <div class="item"><strong>Clases y módulos</strong> Contenido organizado para aprender paso a paso.</div>
+        <div class="item"><strong>PDFs y recursos</strong> Material de apoyo para estudiar y aplicar mejor.</div>
+        <div class="item"><strong>Ejercicios prácticos</strong> Actividades para aterrizar lo aprendido en tu entorno.</div>
+        <div class="item"><strong>Acceso por Hotmart</strong> Una experiencia simple y ordenada de uso.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="kicker"></span>
+      <h2>Por qué vale USD 100 al mes</h2>
+      <p>
+        Porque el valor no está en una pieza aislada, sino en la continuidad: cada mes recibes contenido nuevo, guía y una ruta que avanza contigo.
+      </p>
+      <p style="margin-top:12px">
+        Lo que compras es claridad, estructura, actualización y un proceso de formación que acompaña tu crecimiento.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid grid-2">
+    <div class="card">
+      <span class="kicker"></span>
+      <h2>Bonos</h2>
+      <div class="list">
+        <div class="item"><strong>Checklist de estudio</strong> Para seguir el programa con orden.</div>
+        <div class="item"><strong>Plantillas editables</strong> Para aplicar conceptos más rápido.</div>
+        <div class="item"><strong>Guías PDF</strong> Resúmenes prácticos por módulo.</div>
+        <div class="item"><strong>Actualizaciones</strong> Recursos extra según el avance del instituto.</div>
+      </div>
+    </div>
+
+      <div class="faq">
+        <details>
+          <summary>¿Cuánto dura el programa?</summary>
+          <p style="margin-top:10px">El programa dura 6 meses.</p>
+        </details>
+        <details>
+          <summary>¿Cómo pago?</summary>
+          <p style="margin-top:10px">La inversión es de USD 100 por mes.</p>
+        </details>
+        <details>
+          <summary>¿Dónde accedo al contenido?</summary>
+          <p style="margin-top:10px">El acceso se realiza por Hotmart.</p>
+        </details>
+        <details>
+          <summary>¿Para quién es?</summary>
+          <p style="margin-top:10px">Para emprendedores, profesionales, dueños de negocio y freelancers.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container card" style="text-align:center">
+    <span class="kicker">CTA final</span>
+    <h2 style="margin-top:18px">Empieza ahora con Alpha</h2>
+    <p style="max-width:780px; margin:14px auto 0">
+      Si quieres aprender a usar marketing, IA, automatización y ciberseguridad con una ruta seria, ordenada y de 6 meses, este es tu momento.
+    </p>
+    <div class="actions" style="justify-content:center; margin-top:26px">
+      <a class="btn btn-primary" href="TU_ENLACE_HOTMART">Quiero inscribirme</a>
+      <a class="btn btn-secondary" href="TU_ENLACE_HOTMART">Ver acceso en Hotmart</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Alpha Digital Institute · Marketing, IA, Automatización y Ciberseguridad · Hotmart
+</footer>
+
+</body>
+</html>
